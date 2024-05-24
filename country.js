@@ -11,7 +11,6 @@ const currencies = document.querySelector('.currencies');
 const languages = document.querySelector('.languages');
 const borderCountries = document.querySelector('.border-countries');
 
-// Function to render country details
 function renderCountryDetails(country) {
   flagImage.src = country.flags.svg;
   countryNameH1.innerText = country.name.common;

@@ -1,11 +1,11 @@
 const countriesContainer = document.querySelector('.countries-container');
 const filterByRegion = document.querySelector('.filter-by-region');
 const searchInput = document.querySelector('.search-container input');
-const themeChanger = document.querySelector('.theme-changer');
+const theme = document.querySelector('.theme');
 
 let allCountriesData;
 
-// Fetch all countries data
+
 fetch('https://restcountries.com/v3.1/all')
   .then(res => res.json())
   .then(data => {
@@ -13,7 +13,6 @@ fetch('https://restcountries.com/v3.1/all')
     allCountriesData = data;
   });
 
-// Filter countries by region
 filterByRegion.addEventListener('change', (e) => {
   const region = filterByRegion.value;
   if (region) {
@@ -24,8 +23,6 @@ filterByRegion.addEventListener('change', (e) => {
     renderCountries(allCountriesData);
   }
 });
-
-// Render countries
 function renderCountries(data) {
   countriesContainer.innerHTML = '';
   data.forEach(country => {
@@ -55,7 +52,7 @@ searchInput.addEventListener('input', (e) => {
 });
 
 // Toggle dark mode and save preference to local storage
-themeChanger.addEventListener('click', () => {
+theme.addEventListener('click', () => {
   document.body.classList.toggle('dark');
   const isDarkMode = document.body.classList.contains('dark');
   localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
